@@ -12,14 +12,12 @@ Using a ready made mini OLED display 128x32 pixel for use on I2C bus.
 
     loosely forked from [Adafruit CircuitPython SSD1306 library examples](https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/blob/master/examples/ssd1306_stats.py)
 
-    *note: don't forget to install Python dependencies. I choose to do it system wide in my case as it did not hurt.
+    *note: don't forget to install Python dependencies. I choose to do it system wide in my case as it did not hurt.*
 
     ```bash
     sudo pip3 install adafruit-circuitpython-lis3dh
     sudo pip3 install adafruit-circuitpython-ssd1306
     ```
-
-    *
 
     I replaced the shell command to extract the system load, as my PI is with FR_fr locale, and the decimal separator is a comma. Thus the awk command was mixed up. And rather than fixing it (tried 5 minutes and failed), I changed to read the system load from /proc/loadavg.
 
@@ -65,4 +63,7 @@ Using a ready made mini OLED display 128x32 pixel for use on I2C bus.
     sudo systemctl start OLED.service
     ```
 
-    and finally, reboot to try it.
+    It should already work. If not, first try `sudo systemctl status OLED.service`, and eventually have a look at the system log as the service is defined to ouput any issues in syslog (/var/log/syslog).
+    You might also need to issue a `sudo systemctl daemon-reload`
+
+    And finally, reboot your raspberry to your brand new service for good! 😎
