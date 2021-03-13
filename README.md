@@ -8,9 +8,9 @@ Using a ready made mini OLED display 128x32 pixel for use on I2C bus.
 
 ## Software
 
-1. Python script
+1. Python script stats.py
 
-    loosely forked from [Adafruit CircuitPython SSD1306 library examples](https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/blob/master/examples/ssd1306_stats.py)
+    This script is loosely forked from [Adafruit CircuitPython SSD1306 library examples](https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/blob/master/examples/ssd1306_stats.py)
 
     *note: don't forget to install Python dependencies. I choose to do it system wide in my case as it did not hurt.*
 
@@ -19,7 +19,7 @@ Using a ready made mini OLED display 128x32 pixel for use on I2C bus.
     sudo pip3 install adafruit-circuitpython-ssd1306
     ```
 
-    I replaced the shell command to extract the system load, as my PI is with FR_fr locale, and the decimal separator is a comma. Thus the awk command was mixed up. And rather than fixing it (tried 5 minutes and failed), I changed to read the system load from /proc/loadavg.
+    My PI is with FR_fr locale, hence the decimal separator is a comma. Thus the awk command was mixed up. And rather than fixing it (I tried for 5 minutes and failed), I replaced the shell command which extracted the system load from `top` to instead read the value from /proc/loadavg.
 
     The display will be refreshed every 1 second.
 
@@ -27,7 +27,7 @@ Using a ready made mini OLED display 128x32 pixel for use on I2C bus.
 
     This [answer from DougieLawson on raspberrypi.org forum](https://www.raspberrypi.org/forums/viewtopic.php?t=200174#p1247692) was very helpful to point me in a correct direction.
 
-    put the python script in /home/pi/OLED for example. Make it executable using ```chmod +x stats.py``` if needed.
+    Put the python script in /home/pi/OLED for example. Make it executable using `chmod +x stats.py` if needed.
 
     Then create a new config file for our service:
 
