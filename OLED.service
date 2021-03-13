@@ -1,0 +1,15 @@
+[Unit]
+Description=Get OLED service running at boot
+After=networking.service
+
+[Service]
+Type=idle
+ExecStart=/home/pi/OLED/stats.py
+Restart=always
+StandartOutput=syslog
+StandartError=syslog
+SyslogIdentifier=OLED
+User=pi
+
+[Install]
+WantedBy=multi-user.target
